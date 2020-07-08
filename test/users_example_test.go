@@ -9,16 +9,17 @@ import (
 	"github.com/gruntwork-io/terratest/modules/terraform"
 )
 
-// TestS3Example deploys a test s3 bucket
-func TestS3Example(t *testing.T) {
+// TestIAMUsersExample creates random iam users
+func TestIAMUsersExample(t *testing.T) {
 
 	t.Parallel()
 
 	opts := &terraform.Options{
-		TerraformDir: "../examples/data-stores/s3/",
+		TerraformDir: "../examples/iam/users/",
 
 		Vars: map[string]interface{}{
-			"bucket_name": fmt.Sprintf("test-%s", strings.ToLower(random.UniqueId())),
+			"user_names": []string{fmt.Sprintf("test-%s", strings.ToLower(random.UniqueId())),
+				fmt.Sprintf("test-%s", strings.ToLower(random.UniqueId()))},
 		},
 	}
 
