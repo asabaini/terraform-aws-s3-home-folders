@@ -9,7 +9,7 @@ provider "aws" {
   version = "~> 2.0"
 }
 
-resource "aws_s3_bucket" "home_folder" {
+resource "aws_s3_bucket" "bucket" {
 
   bucket = var.bucket_name
   acl    = "private"
