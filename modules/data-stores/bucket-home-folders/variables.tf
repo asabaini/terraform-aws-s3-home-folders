@@ -8,6 +8,11 @@ variable "bucket_name" {
   type        = string
 }
 
+variable "folder_names" {
+  description = "The list of folder names"
+  type        = list(string)
+}
+
 # ---------------------------------------------------------------------------------------------------------------------
 # OPTIONAL PARAMETERS
 # These parameters have reasonable defaults.

@@ -29,3 +29,12 @@ resource "aws_s3_bucket" "bucket" {
     }
   }
 }
+
+resource "aws_s3_bucket_object" "home_folders" {
+  count = length(var.folder_names)
+  
+  # bucket = "${aws_s3_bucket.b.id}"
+  bucket = aws_s3_bucket.bucket.id
+  key    = element(var.folder_names, count.index)
+  source = "/dev/null"
+}

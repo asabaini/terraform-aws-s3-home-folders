@@ -10,12 +10,12 @@ import (
 )
 
 // TestS3Example deploys a test s3 bucket
-func TestS3Example(t *testing.T) {
+func TestBucketHomeFolderExample(t *testing.T) {
 
 	t.Parallel()
 
 	opts := &terraform.Options{
-		TerraformDir: "../examples/data-stores/s3/",
+		TerraformDir: "../examples/data-stores/bucket-home-folders/",
 
 		Vars: map[string]interface{}{
 			"bucket_name": fmt.Sprintf("test-%s", strings.ToLower(random.UniqueId())),

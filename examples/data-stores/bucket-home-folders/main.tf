@@ -9,7 +9,8 @@ provider "aws" {
   version = "~> 2.0"
 }
 
-module "s3" {
-  source = "../../../modules/data-stores/s3"
+module "bucket-home-folders" {
+  source = "../../../modules/data-stores/bucket-home-folders"
   bucket_name = var.bucket_name
+  folder_names = var.folder_names
 }
