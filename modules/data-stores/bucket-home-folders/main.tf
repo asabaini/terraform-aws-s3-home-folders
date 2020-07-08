@@ -30,11 +30,21 @@ resource "aws_s3_bucket" "bucket" {
   }
 }
 
+resource "aws_s3_bucket_public_access_block" "bucket" {
+  bucket = aws_s3_bucket.bucket.id
+
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+  
+}
+
 resource "aws_s3_bucket_object" "home_folders" {
   count = length(var.folder_names)
   
   # bucket = "${aws_s3_bucket.b.id}"
   bucket = aws_s3_bucket.bucket.id
-  key    = element(var.folder_names, count.index)
+  key    = format("%s/", element(var.folder_names, count.index))
   source = "/dev/null"
 }

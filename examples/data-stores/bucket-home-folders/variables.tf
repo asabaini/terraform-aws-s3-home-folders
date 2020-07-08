@@ -12,5 +12,5 @@ variable "bucket_name" {
 variable "folder_names" {
   description = "The list of folder names"
   type        = list(string)
-  default = ["myfirstfolder/", "mysecondfolder/"]
+  default = ["myfirstfolder", "mysecondfolder"]
 }
