@@ -3,6 +3,10 @@ output "users_arns" {
   description = "The ARN of the users"
 }
 
+output "user_names" {
+  value       = module.users.*.user_names
+  description = "The users' name"
+}
 
 output "user_access_keys" {
    value       = module.users.*.user_access_keys

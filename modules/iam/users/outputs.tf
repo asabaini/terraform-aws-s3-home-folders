@@ -3,6 +3,11 @@ output "user_arns" {
   description = "Users ARNs"
 }
 
+output "user_names" {
+  value       = aws_iam_user.user.*.name
+  description = "The users' name"
+}
+
 output "user_access_keys" {
   value       = aws_iam_access_key.user_access_key.*.id
   description = "The users' keys"
