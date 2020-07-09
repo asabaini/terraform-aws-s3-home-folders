@@ -19,6 +19,8 @@ func TestBucketHomeFolderExample(t *testing.T) {
 
 		Vars: map[string]interface{}{
 			"bucket_name": fmt.Sprintf("test-%s", strings.ToLower(random.UniqueId())),
+			"folder_names": []string{fmt.Sprintf("test-%s", strings.ToLower(random.UniqueId())),
+				fmt.Sprintf("test-%s", strings.ToLower(random.UniqueId()))},
 		},
 	}
 
