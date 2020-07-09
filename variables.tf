@@ -28,3 +28,9 @@ variable "path" {
   type        = string
   default     = "/users/"
 }
+
+variable "shared_folder_name" {
+  description = "The shared folder name"
+  type        = string
+  default     = "sharedfolder"
+}

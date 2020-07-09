@@ -43,8 +43,14 @@ resource "aws_s3_bucket_public_access_block" "bucket" {
 resource "aws_s3_bucket_object" "home_folders" {
   count = length(var.folder_names)
   
-  # bucket = "${aws_s3_bucket.b.id}"
   bucket = aws_s3_bucket.bucket.id
   key    = format("%s/", element(var.folder_names, count.index))
+  source = "/dev/null"
+}
+
+resource "aws_s3_bucket_object" "shared_folder" {
+   
+  bucket = aws_s3_bucket.bucket.id
+  key    = format("%s/", var.shared_folder_name)
   source = "/dev/null"
 }

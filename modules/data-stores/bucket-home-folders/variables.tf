@@ -17,3 +17,9 @@ variable "folder_names" {
 # OPTIONAL PARAMETERS
 # These parameters have reasonable defaults.
 # ---------------------------------------------------------------------------------------------------------------------
+
+variable "shared_folder_name" {
+  description = "The name of the shared folder"
+  type        = string
+  default     = "shared_folder"
+}
