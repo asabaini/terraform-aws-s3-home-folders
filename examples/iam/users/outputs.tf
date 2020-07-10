@@ -1,8 +1,3 @@
-output "users_arns" {
-  value       = module.users.*.user_arns
-  description = "The ARN of the users"
-}
-
 output "user_names" {
   value       = module.users.*.user_names
   description = "The users' name"
@@ -10,10 +5,10 @@ output "user_names" {
 
 output "user_access_keys" {
    value       = module.users.*.user_access_keys
-  description = "The users' keys"
+  description = "The users' access keys"
 }
 
 output "user_secret_keys" {
    value       = module.users.*.user_secret_keys
-  description = "The users' keys"
+  description = "The users' secret keys"
 }

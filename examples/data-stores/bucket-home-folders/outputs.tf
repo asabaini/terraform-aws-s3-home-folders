@@ -1,4 +1,4 @@
-output "s3_bucket_arn" {
-  value       = module.bucket-home-folders.s3_bucket_arn
-  description = "The ARN of the S3 bucket"
+output "bucket_domain_name" {
+  value       = module.bucket-home-folders.bucket_domain_name
+  description = "The bucket domain name in the form bucketname.s3.amazonaws.com"
 }
