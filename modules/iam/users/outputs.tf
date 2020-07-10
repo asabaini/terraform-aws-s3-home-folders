@@ -1,3 +1,8 @@
+output "users_arns" {
+  value       = module.users.*.user_arns
+  description = "The ARN of the users"
+}
+
 output "user_names" {
   value       = aws_iam_user.user.*.name
   description = "The users' name"
