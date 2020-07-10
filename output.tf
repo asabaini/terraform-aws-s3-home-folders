@@ -1,8 +1,3 @@
-output "users_arns" {
-  value       = module.users.*.user_arns
-  description = "The ARN of the users"
-}
-
 output "user_names" {
   value       = module.users.*.user_names
   description = "The users' name"
