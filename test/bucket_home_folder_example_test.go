@@ -5,9 +5,9 @@ import (
 	"strings"
 	"testing"
 
+	terratest_aws "github.com/gruntwork-io/terratest/modules/aws"
 	"github.com/gruntwork-io/terratest/modules/random"
 	"github.com/gruntwork-io/terratest/modules/terraform"
-	terratest_aws "github.com/gruntwork-io/terratest/modules/aws"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -32,6 +32,6 @@ func TestBucketHomeFolderExample(t *testing.T) {
 	// Deploy the example
 	terraform.InitAndApply(t, opts)
 	terratest_aws.AssertS3BucketExists(t, "eu-central-1", opts.Vars["bucket_name"].(string))
-  objectList := GetS3ObjectContents(t, "eu-central-1", opts.Vars["bucket_name"].(string), key string) string
-	assert.Contains(t, folderlist, opts.Vars["home_folder_names"][0].(string))
+	objectList := terratest_aws.GetS3ObjectContents(t, "eu-central-1", opts.Vars["bucket_name"].(string), opts.Vars["home_folder_names"].(string))
+	assert.Contains(t, objectList, opts.Vars["home_folder_names"].([]string)[0])
 }
