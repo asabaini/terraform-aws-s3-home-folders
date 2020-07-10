@@ -28,5 +28,4 @@ func TestIAMUsersExample(t *testing.T) {
 
 	// Deploy the example
 	terraform.InitAndApply(t, opts)
-
 }
