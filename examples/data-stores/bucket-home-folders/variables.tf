@@ -9,8 +9,8 @@ variable "bucket_name" {
   default     = "mytestbucket-home-folder"
 }
 
-variable "folder_names" {
-  description = "The list of folder names"
+variable "home_folder_names" {
+  description = "The list of home folder names"
   type        = list(string)
   default = ["myfirstfolder", "mysecondfolder"]
 }

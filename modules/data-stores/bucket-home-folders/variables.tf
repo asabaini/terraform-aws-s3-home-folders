@@ -8,8 +8,8 @@ variable "bucket_name" {
   type        = string
 }
 
-variable "folder_names" {
-  description = "The list of folder names"
+variable "home_folder_names" {
+  description = "The list of home folder names"
   type        = list(string)
 }
 

@@ -12,5 +12,5 @@ provider "aws" {
 module "bucket-home-folders" {
   source = "../../../modules/data-stores/bucket-home-folders"
   bucket_name = var.bucket_name
-  folder_names = var.folder_names
+  home_folder_names = var.home_folder_names
 }
