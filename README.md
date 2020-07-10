@@ -1,6 +1,6 @@
 # Terraform S3 home folders
 
-This folder contains terraform code to create IAM users and a S3 Bucket structured as a unix home folder. One user has a personal folder, and all users can read from a shared folder. As an example:
+This folder contains terraform code to create IAM users and a S3 Bucket structured as a unix home folder. Each user has a personal folder, and all users can read from a shared folder. As an example:
 
 ```bash
 +-- README.md
@@ -25,3 +25,36 @@ This repository is structured as follows:
 
 * You must have [Terraform](https://www.terraform.io/) installed on your computer.
 * You must have an [Amazon Web Services (AWS) account](http://aws.amazon.com/).
+
+## Usage
+
+```tf
+terraform {
+  required_version = ">= 0.12, < 0.13"
+}
+
+provider "aws" {
+  region = "eu-central-1"
+
+  # Allow any 2.x version of the AWS provider
+  version = "~> 2.0"
+}
+
+module "home_folders" {
+  source        = "asabaini/s3_home_folders/aws"
+  version       = "~> 1.0.0"
+  bucket_name = "mybucketname"
+  user_names  = ["myuser1", "myuser2"]
+  group_name  = "mygroup"
+}
+```
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|:----:|:-----:|:-----:|
+| bucket\_name | The bucket name - must be globally unique | string | `""` | yes |
+| user_names | The list of user names | list(string) | `[]` | yes |
+| group_name | The group name | string | `""` | yes |
+| path | The path for the users to be created in | string | `"/users/"` | no |
+| shared_folder_name | The shared folder name | string | `"sharedfolder"` | no |
