@@ -12,7 +12,7 @@ provider "aws" {
 module "bucket-home-folders" {
   source             = "./modules/data-stores/bucket-home-folders"
   bucket_name        = var.bucket_name
-  home_folder_names       = var.user_names
+  home_folder_names  = var.user_names
   shared_folder_name = var.shared_folder_name
 }
 
@@ -67,7 +67,7 @@ resource "aws_iam_group_policy" "write_in_personal_folder_policy" {
   name  = "allow_users_to_write_in_personal_folder"
   group = aws_iam_group.group.id
 
-    policy = <<EOF
+  policy = <<EOF
 {
 "Version":"2012-10-17",
   "Statement": [
@@ -98,7 +98,7 @@ resource "aws_iam_group_policy" "read_shared_folder_policy" {
   name  = "allow_users_to_write_in_personal_folder"
   group = aws_iam_group.group.id
 
-    policy = <<EOF
+  policy = <<EOF
 {
 "Version":"2012-10-17",
   "Statement": [
