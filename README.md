@@ -41,7 +41,7 @@ provider "aws" {
 }
 
 module "home_folders" {
-  source        = "asabaini/s3_home_folders/aws"
+  source        = "asabaini/s3-home-folders/aws"
   version       = "~> 1.0.0"
   bucket_name = "mybucketname"
   user_names  = ["myuser1", "myuser2"]
