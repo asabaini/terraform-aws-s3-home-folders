@@ -95,7 +95,7 @@ EOF
 }
 
 resource "aws_iam_group_policy" "read_shared_folder_policy" {
-  name  = "allow_users_to_write_in_personal_folder"
+  name  = "allow_users_to_read_shared_folder"
   group = aws_iam_group.group.id
 
   policy = <<EOF
