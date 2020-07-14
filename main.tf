@@ -36,7 +36,6 @@ resource "aws_iam_group_membership" "group_membership" {
 }
 
 resource "aws_iam_group_policy" "list_all_buckets_policy" {
-  name  = "allow_users_to_list_all_buckets"
   group = aws_iam_group.group.id
 
   policy = <<EOF
@@ -64,7 +63,6 @@ EOF
 }
 
 resource "aws_iam_group_policy" "write_in_personal_folder_policy" {
-  name  = "allow_users_to_write_in_personal_folder"
   group = aws_iam_group.group.id
 
   policy = <<EOF
@@ -95,7 +93,6 @@ EOF
 }
 
 resource "aws_iam_group_policy" "read_shared_folder_policy" {
-  name  = "allow_users_to_write_in_personal_folder"
   group = aws_iam_group.group.id
 
   policy = <<EOF
