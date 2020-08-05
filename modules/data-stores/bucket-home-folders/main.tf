@@ -2,6 +2,11 @@ terraform {
   required_version = ">= 0.12, < 0.13"
 }
 
+provider "aws" {
+  region = "eu-central-1"
+  version = "~> 2.0"
+}
+
 data "aws_s3_bucket" "bucket" {
   bucket = var.bucket_name
 }
