@@ -23,6 +23,7 @@ func TestBucketHomeFolderExample(t *testing.T) {
 			"bucket_name": fmt.Sprintf("test-%s", strings.ToLower(random.UniqueId())),
 			"home_folder_names": []string{fmt.Sprintf("test-%s", strings.ToLower(random.UniqueId())),
 				fmt.Sprintf("test-%s", strings.ToLower(random.UniqueId()))},
+			"shared_folder_name": fmt.Sprintf("test-shared-folder-%s", strings.ToLower(random.UniqueId())),
 		},
 	}
 
@@ -32,6 +33,8 @@ func TestBucketHomeFolderExample(t *testing.T) {
 	// Deploy the example
 	terraform.InitAndApply(t, opts)
 	terratest_aws.AssertS3BucketExists(t, "eu-central-1", opts.Vars["bucket_name"].(string))
-	objectList := terratest_aws.GetS3ObjectContents(t, "eu-central-1", opts.Vars["bucket_name"].(string), opts.Vars["home_folder_names"].(string))
-	assert.Contains(t, objectList, opts.Vars["home_folder_names"].([]string)[0])
+	objectList, objerror := terratest_aws.GetS3ObjectContentsE(t, "eu-central-1", opts.Vars["bucket_name"].(string), "/")
+	assert.NotEmpty(t, objectList)
+	assert.Empty(t, objerror)
+	assert.Contains(t, objectList, opts.Vars["shared_folder_name"].(string))
 }

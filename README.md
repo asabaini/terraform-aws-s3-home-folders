@@ -1,6 +1,6 @@
 # Terraform S3 home folders
 
-This folder contains terraform code to create IAM users and a S3 Bucket structured as a unix home folder. Each user has a personal folder, and all users can read from a shared folder. As an example:
+This folder contains terraform code to create IAM users and a S3 Bucket structured as a unix home folder. Each user has a personal private folder, and all users can read from a shared folder. As an example:
 
 ```bash
 +-- README.md
@@ -58,3 +58,13 @@ module "home_folders" {
 | group_name | The group name | string | `""` | yes |
 | path | The path for the users to be created in | string | `"/users/"` | no |
 | shared_folder_name | The shared folder name | string | `"sharedfolder"` | no |
+| create_personal_folders | If true, create personal folders | bool | `true` | no |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| user_names | The users' name |
+user_access_keys | The users' keys |
+user_secret_keys | The users' keys |
+bucket_domain_name | The bucket domain name in the form bucketname.s3.amazonaws.com |

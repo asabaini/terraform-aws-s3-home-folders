@@ -2,18 +2,12 @@ terraform {
   required_version = ">= 0.12, < 0.13"
 }
 
-provider "aws" {
-  region = "eu-central-1"
-
-  # Allow any 2.x version of the AWS provider
-  version = "~> 2.0"
-}
-
 module "bucket-home-folders" {
-  source             = "./modules/data-stores/bucket-home-folders"
-  bucket_name        = var.bucket_name
-  home_folder_names  = var.user_names
-  shared_folder_name = var.shared_folder_name
+  source                  = "./modules/data-stores/bucket-home-folders"
+  bucket_name             = var.bucket_name
+  home_folder_names       = var.user_names
+  shared_folder_name      = var.shared_folder_name
+  create_personal_folders = var.create_personal_folders
 }
 
 module "users" {
@@ -63,6 +57,7 @@ EOF
 }
 
 resource "aws_iam_group_policy" "write_in_personal_folder_policy" {
+  count = var.create_personal_folders ? 1 : 0
   group = aws_iam_group.group.id
 
   policy = <<EOF
