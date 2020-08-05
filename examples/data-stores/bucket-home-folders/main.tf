@@ -9,9 +9,13 @@ provider "aws" {
   version = "~> 2.0"
 }
 
+resource "aws_s3_bucket" "bucket" {
+  bucket = var.bucket_name
+}
+
 module "bucket-home-folders" {
   source = "../../../modules/data-stores/bucket-home-folders"
-  bucket_name = var.bucket_name
+  bucket_name = aws_s3_bucket.bucket.id
   home_folder_names = var.home_folder_names
   shared_folder_name = var.shared_folder_name
 }

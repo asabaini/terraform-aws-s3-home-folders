@@ -40,10 +40,14 @@ provider "aws" {
   version = "~> 2.0"
 }
 
+resource "aws_s3_bucket" "bucket" {
+  bucket = var.bucket_name
+}
+
 module "home_folders" {
   source        = "asabaini/s3-home-folders/aws"
   version       = "~> 1.0.0"
-  bucket_name = "mybucketname"
+  bucket_name = aws_s3_bucket.bucket.id
   user_names  = ["myuser1", "myuser2"]
   group_name  = "mygroup"
 }
