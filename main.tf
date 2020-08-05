@@ -3,10 +3,10 @@ terraform {
 }
 
 module "bucket-home-folders" {
-  source             = "./modules/data-stores/bucket-home-folders"
-  bucket_name        = var.bucket_name
-  home_folder_names  = var.user_names
-  shared_folder_name = var.shared_folder_name
+  source                  = "./modules/data-stores/bucket-home-folders"
+  bucket_name             = var.bucket_name
+  home_folder_names       = var.user_names
+  shared_folder_name      = var.shared_folder_name
   create_personal_folders = var.create_personal_folders
 }
 
