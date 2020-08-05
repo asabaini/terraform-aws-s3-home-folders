@@ -58,6 +58,7 @@ module "home_folders" {
 | group_name | The group name | string | `""` | yes |
 | path | The path for the users to be created in | string | `"/users/"` | no |
 | shared_folder_name | The shared folder name | string | `"sharedfolder"` | no |
+| create_personal_folders | If true, create personal folders | bool | `true` | no |
 
 ## Outputs
 

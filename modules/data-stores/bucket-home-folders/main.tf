@@ -2,13 +2,6 @@ terraform {
   required_version = ">= 0.12, < 0.13"
 }
 
-provider "aws" {
-  region = "eu-central-1"
-
-  # Allow any 2.x version of the AWS provider
-  version = "~> 2.0"
-}
-
 resource "aws_s3_bucket" "bucket" {
 
   bucket = var.bucket_name
@@ -41,7 +34,7 @@ resource "aws_s3_bucket_public_access_block" "bucket" {
 }
 
 resource "aws_s3_bucket_object" "home_folders" {
-  count = length(var.home_folder_names)
+  count = var.create_personal_folders? length(var.home_folder_names) : 0
   
   bucket = aws_s3_bucket.bucket.id
   key    = format("%s/", element(var.home_folder_names, count.index))

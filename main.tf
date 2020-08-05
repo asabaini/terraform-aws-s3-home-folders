@@ -7,6 +7,7 @@ module "bucket-home-folders" {
   bucket_name        = var.bucket_name
   home_folder_names  = var.user_names
   shared_folder_name = var.shared_folder_name
+  create_personal_folders = var.create_personal_folders
 }
 
 module "users" {
@@ -56,6 +57,7 @@ EOF
 }
 
 resource "aws_iam_group_policy" "write_in_personal_folder_policy" {
+  count = var.create_personal_folders ? 1 : 0
   group = aws_iam_group.group.id
 
   policy = <<EOF

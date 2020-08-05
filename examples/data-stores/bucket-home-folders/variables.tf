@@ -14,3 +14,9 @@ variable "home_folder_names" {
   type        = list(string)
   default = ["myfirstfolder", "mysecondfolder"]
 }
+
+variable "shared_folder_name" {
+  description = "The list of home folder names"
+  type        = string
+  default = "example_shared_folder"
+}

@@ -13,4 +13,5 @@ module "bucket-home-folders" {
   source = "../../../modules/data-stores/bucket-home-folders"
   bucket_name = var.bucket_name
   home_folder_names = var.home_folder_names
+  shared_folder_name = var.shared_folder_name
 }
