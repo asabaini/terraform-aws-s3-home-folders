@@ -3,10 +3,10 @@ data "aws_s3_bucket" "bucket" {
 }
 
 resource "aws_s3_bucket_object" "home_folders" {
-  count = var.create_personal_folders? length(var.home_folder_names) : 0
+  for_each = var.home_folder_names
   
   bucket = data.aws_s3_bucket.bucket.id
-  key    = format("%s/", element(var.home_folder_names, count.index))
+  key    = format("%s/", each.value)
   source = "/dev/null"
 }
 

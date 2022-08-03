@@ -1,12 +1,13 @@
 resource "aws_iam_user" "user" {
-  count = length(var.user_names)
+  for_each = var.user_names
   
-  name = element(var.user_names, count.index)
+  name = each.value
   path = var.path
 }
 
 resource "aws_iam_access_key" "user_access_key" {
-  count = length(var.user_names)
+  for_each = var.user_names
+
   
-  user = aws_iam_user.user[count.index].name
+  user = aws_iam_user.user[each.value].name
 }

@@ -10,7 +10,7 @@ variable "bucket_name" {
 
 variable "home_folder_names" {
   description = "The list of home folder names"
-  type        = list(string)
+  type        = set(string)
 }
 
 # ---------------------------------------------------------------------------------------------------------------------
