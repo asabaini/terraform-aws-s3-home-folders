@@ -30,14 +30,16 @@ This repository is structured as follows:
 
 ```tf
 terraform {
-  required_version = ">= 0.12, < 0.13"
+  required_providers {
+    aws = {
+      version = "~> 2.0"
+      source  = "hashicorp/aws"
+    }
+  }
 }
 
 provider "aws" {
-  region = "eu-central-1"
-
-  # Allow any 2.x version of the AWS provider
-  version = "~> 2.0"
+  region = "eu-south-1"
 }
 
 resource "aws_s3_bucket" "bucket" {
@@ -58,7 +60,7 @@ module "home_folders" {
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
 | bucket\_name | The bucket name - must be globally unique | string | `""` | yes |
-| user_names | The list of user names | list(string) | `[]` | yes |
+| user_names | The list of user names | set(string) | `[]` | yes |
 | group_name | The group name | string | `""` | yes |
 | path | The path for the users to be created in | string | `"/users/"` | no |
 | shared_folder_name | The shared folder name | string | `"sharedfolder"` | no |

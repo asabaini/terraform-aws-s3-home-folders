@@ -5,6 +5,6 @@
 
 variable "user_names" {
   description = "The list of user names"
-  type    = list(string)
+  type    = set(string)
   default = ["myfirstuser", "myseconduser"]
 }

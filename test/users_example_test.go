@@ -9,8 +9,8 @@ import (
 	"github.com/gruntwork-io/terratest/modules/terraform"
 )
 
-// TestIAMUsersExample creates random iam users
-func TestIAMUsersExample(t *testing.T) {
+// TestUsersExample creates random iam users
+func TestUsersExample(t *testing.T) {
 
 	t.Parallel()
 
