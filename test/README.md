@@ -22,7 +22,6 @@ Run the test:
 
 ```bash
 export GOPATH=/set/gopath
-dep init
 go test -v -timeout 30m
 ```
 
@@ -31,7 +30,7 @@ go test -v -timeout 30m
 Go's default behavior is to run all tests in the current folder. By Specifying `-run FunctionName` one may run just one test
 
 ```bash
-go test -v -timeout 30m -run TestGoIsWorking
+go test -v -timeout 30m -run TestGoSanity
 ```
 
 ### GOPATH

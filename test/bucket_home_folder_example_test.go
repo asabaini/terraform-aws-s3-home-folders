@@ -11,7 +11,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-// TestS3Example deploys a test s3 bucket
+// TestBucketHomeFolderExample deploys a test s3 bucket
 func TestBucketHomeFolderExample(t *testing.T) {
 
 	t.Parallel()
@@ -32,8 +32,8 @@ func TestBucketHomeFolderExample(t *testing.T) {
 
 	// Deploy the example
 	terraform.InitAndApply(t, opts)
-	terratest_aws.AssertS3BucketExists(t, "eu-central-1", opts.Vars["bucket_name"].(string))
-	objectList, objerror := terratest_aws.GetS3ObjectContentsE(t, "eu-central-1", opts.Vars["bucket_name"].(string), "/")
+	terratest_aws.AssertS3BucketExists(t, "eu-south-1", opts.Vars["bucket_name"].(string))
+	objectList, objerror := terratest_aws.GetS3ObjectContentsE(t, "eu-south-1", opts.Vars["bucket_name"].(string), "/")
 	assert.NotEmpty(t, objectList)
 	assert.Empty(t, objerror)
 	assert.Contains(t, objectList, opts.Vars["shared_folder_name"].(string))
