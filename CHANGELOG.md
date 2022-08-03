@@ -8,8 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## 2.0.0
 
-* Update module to Terraform > 1.2.6
-* Switch from `list` to `set` for `user_names` variable
+* Update module to Terraform ~> 1.2.6
+* Switch from `list` to `set` for `user_names` and `home_folder_names` variables
 
 ## 1.2.0
 

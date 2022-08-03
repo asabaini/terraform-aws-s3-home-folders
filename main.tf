@@ -1,12 +1,3 @@
-terraform {
-  required_providers {
-    aws = {
-      version = "~> 2.0"
-      source  = "hashicorp/aws"
-    }
-  }
-}
-
 module "bucket-home-folders" {
   source                  = "./modules/data-stores/bucket-home-folders"
   bucket_name             = var.bucket_name
