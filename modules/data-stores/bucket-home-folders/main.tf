@@ -3,7 +3,7 @@ data "aws_s3_bucket" "bucket" {
 }
 
 resource "aws_s3_bucket_object" "home_folders" {
-  for_each = var.home_folder_names
+  for_each = { for k, v in var.home_folder_names : k => v if var.create_personal_folders }
   
   bucket = data.aws_s3_bucket.bucket.id
   key    = format("%s/", each.value)

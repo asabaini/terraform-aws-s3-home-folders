@@ -3,7 +3,6 @@
 This folder contains terraform code to create IAM users and a S3 Bucket structured as a unix home folder. Each user has a personal private folder, and all users can read from a shared folder. As an example:
 
 ```bash
-+-- README.md
 +-- user1
 |   +-- my_file1.txt
 |   +-- another_file1.txt
@@ -32,7 +31,7 @@ This repository is structured as follows:
 terraform {
   required_providers {
     aws = {
-      version = "~> 2.0"
+      version = ">= 3.63"
       source  = "hashicorp/aws"
     }
   }
@@ -48,7 +47,7 @@ resource "aws_s3_bucket" "bucket" {
 
 module "home_folders" {
   source        = "asabaini/s3-home-folders/aws"
-  version       = "~> 1.0.0"
+  version       = "~> 2.0.0"
   bucket_name = aws_s3_bucket.bucket.id
   user_names  = ["myuser1", "myuser2"]
   group_name  = "mygroup"
@@ -71,6 +70,5 @@ module "home_folders" {
 | Name | Description |
 |------|-------------|
 | user_names | The users' name |
-user_access_keys | The users' keys |
-user_secret_keys | The users' keys |
-bucket_domain_name | The bucket domain name in the form bucketname.s3.amazonaws.com |
+| user_access_keys | The users' keys |
+| user_secret_keys | The users' keys |
