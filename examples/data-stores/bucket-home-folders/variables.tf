@@ -12,13 +12,13 @@ variable "bucket_name" {
 variable "home_folder_names" {
   description = "The list of home folder names"
   type        = set(string)
-  default = ["myfirstfolder", "mysecondfolder"]
+  default     = ["myfirstfolder", "mysecondfolder"]
 }
 
 variable "shared_folder_name" {
   description = "The list of home folder names"
   type        = string
-  default = "example_shared_folder"
+  default     = "example_shared_folder"
 }
 
 variable "create_personal_folders" {
