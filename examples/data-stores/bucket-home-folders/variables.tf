@@ -20,3 +20,9 @@ variable "shared_folder_name" {
   type        = string
   default = "example_shared_folder"
 }
+
+variable "create_personal_folders" {
+  description = "If set to true, create personal folders and write permissions"
+  type        = bool
+  default     = true
+}
